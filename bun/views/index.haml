@@ -1,0 +1,34 @@
+:javascript
+  $(init);
+  function init () {
+    $('.symbol').draggable();
+    $('.dest').droppable({
+      accept: '.symbol div',
+      hoverClass: 'hovered',
+      drop: handleSymbol
+    });
+  }
+  function handleSymbol (event, ui) {
+    var draggable = ui.draggable;
+    alert( 'The square with ID "' + draggable.attr('id') + '" was dropped onto me!' );
+  }
+
+%table
+  %tr
+    %td
+      .article.dest
+    %td
+      .dest
+    %td
+      .dest
+  %tr
+    %td Le
+    %td chat
+    %td mange
+%div
+  .symbol.article#article
+    %img{src:"article.png"}
+  .symbol.nom
+    %img{src:"nom.png"}
+  .symbol.verbe
+    %img{src:"verbe.png"}
