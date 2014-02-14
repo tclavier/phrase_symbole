@@ -1,9 +1,18 @@
-.dest{
+.container{
   height: 32px;
   min-width: 32px;
-  border: solid 1px green;
+  border: dotted 1px black;
 }
 
-.hover{
-  border: solid 1px red;
+.hovered{
+  border: solid 1px blue;
 }
+
+.case {
+  display: table-cell;
+}
+
+.mot {
+  padding: 3px;
+}
+

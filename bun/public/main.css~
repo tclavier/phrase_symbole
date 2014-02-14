@@ -1,5 +1,0 @@
-.dest{
-  height: 32px;
-  min-width: 32px;
-  border: solid 1px red;
-}
