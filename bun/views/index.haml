@@ -1,12 +1,11 @@
 :javascript
   function init () {
     $('.symbol').draggable({
-      revert: true 
+      revert: myRevertFunc 
     });
     $('.container').droppable({
       hoverClass: 'hovered',
       tolerance: "pointer",
-      drop: handleSymbol
     });
   }
   function handleSymbol (event, ui) {
@@ -15,6 +14,20 @@
       var draggable_classes = ui.draggable.className;
       if (ui.draggable.hasClass(droppable_classes[i])){
         alert("C'est bien");
+      }
+    }
+  }
+
+  function myRevertFunc(ui) {
+    if(ui === false) {
+      return true;
+    } else {
+      var symbol = $(this).attr('id');
+      var droppable_classes = ui.parent().get( 0 ).className;
+      if (ui.parent().hasClass(symbol)) {
+        return false;
+      } else {
+        return true;
       }
     }
   }
@@ -30,12 +43,18 @@
   .mot mange
 
 %div
-  .symbol.article#article
+  .symbol#article
     %img{src:"article.png"}
-  .symbol.nom
+  .symbol#nom
     %img{src:"nom.png"}
-  .symbol.verbe
+  .symbol#verbe
     %img{src:"verbe.png"}
+  .symbol#preposition
+    %img{src:"preposition.png"}
+  .symbol#pronom
+    %img{src:"pronom.png"}
+  .symbol#adjectif
+    %img{src:"adjectif.png"}
 
 :javascript
   $(init);
