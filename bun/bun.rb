@@ -1,10 +1,18 @@
 # encoding: utf-8
 
+class Phrase 
+  include DataMapper::Resource
+  property :id,   Serial
+  property :json, Text, :required => true
+end
+
 class Bun < Sinatra::Base
   @flash
 
   configure do
     set :haml, :format => :html5
+    DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
+    DataMapper.auto_migrate!
   end
 
   error do
@@ -19,3 +27,4 @@ class Bun < Sinatra::Base
     haml :index
   end
 end
+
