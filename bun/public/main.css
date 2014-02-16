@@ -14,5 +14,56 @@
 
 .mot {
   padding: 3px;
+  text-align: center;
 }
 
+.liste {
+  border: 2px solid black;
+  border-radius: 15px;
+  margin: 1em;
+}
+
+.bravo-article {
+  border: solid 1px white;
+  background: center no-repeat url("article.png");
+}
+
+.bravo-adjectif {
+  border: solid 1px white;
+  background: center no-repeat url("adjectif.png");
+}
+
+.bravo-nom {
+  border: solid 1px white;
+  background: center no-repeat url("nom.png");
+}
+
+.bravo-verbe {
+  border: solid 1px white;
+  background: center no-repeat url("verbe.png");
+}
+
+.bravo-adverbe {
+  border: solid 1px white;
+  background: center no-repeat url("adverbe.png");
+}
+
+.bravo-preposition {
+  border: solid 1px white;
+  background: center no-repeat url("preposition.png");
+}
+
+.bravo-pronom {
+  border: solid 1px white;
+  background: center no-repeat url("pronom.png");
+}
+
+.bravo-conjonction {
+  border: solid 1px white;
+  background: center no-repeat url("conjonction.png");
+}
+
+.bravo-interjection {
+  border: solid 1px white;
+  background: center no-repeat url("interjection.png");
+}

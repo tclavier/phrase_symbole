@@ -1,60 +1,63 @@
 :javascript
-  function init () {
-    $('.symbol').draggable({
-      revert: myRevertFunc 
-    });
-    $('.container').droppable({
-      hoverClass: 'hovered',
-      tolerance: "pointer",
-    });
-  }
-  function handleSymbol (event, ui) {
-    var droppable_classes = $(this).parent().get( 0 ).className.split(/\s+/);
-    for (var i=0,len=droppable_classes.length; i<len; i++){
-      var draggable_classes = ui.draggable.className;
-      if (ui.draggable.hasClass(droppable_classes[i])){
-        alert("C'est bien");
-      }
-    }
-  }
+  var phrase = {'Zut !' : 'interjection', 'Le' : 'article', 'chat' : 'nom', 'mange' : 'verbe', 'le' : 'article', 'manchot.' : 'nom' }
 
-  function myRevertFunc(ui) {
-    if(ui === false) {
-      return true;
-    } else {
-      var symbol = $(this).attr('id');
-      var droppable_classes = ui.parent().get( 0 ).className;
-      if (ui.parent().hasClass(symbol)) {
-        return false;
-      } else {
-        return true;
-      }
-    }
-  }
+#phrase
 
-.article.case
-  .container
-  .mot Le
-.nom.case
-  .container
-  .mot chat
-.verbe.case
-  .container
-  .mot mange
-
-%div
-  .symbol#article
-    %img{src:"article.png"}
-  .symbol#nom
-    %img{src:"nom.png"}
-  .symbol#verbe
-    %img{src:"verbe.png"}
-  .symbol#preposition
-    %img{src:"preposition.png"}
-  .symbol#pronom
-    %img{src:"pronom.png"}
-  .symbol#adjectif
-    %img{src:"adjectif.png"}
+%table.liste
+  %tr
+    %td
+      .symbol#article
+        %img{src:"article.png"}
+    %td
+      Article : le petit amis du nom
+  %tr
+    %td
+      .symbol#adjectif
+        %img{src:"adjectif.png"}
+    %td
+      Adjectif : donne une information sur le nom
+  %tr
+    %td
+      .symbol#nom
+        %img{src:"nom.png"}
+    %td
+      Nom : désigne une personne, une chose ou un animal
+  %tr
+    %td
+      .symbol#pronom
+        %img{src:"pronom.png"}
+    %td
+      Pronom : remplace la famille du nom (article, adjectif, nom)
+  %tr
+    %td
+      .symbol#verbe
+        %img{src:"verbe.png"}
+    %td
+      Verbe : l'action de la phrase
+  %tr
+    %td
+      .symbol#adverbe
+        %img{src:"adverbe.png"}
+    %td
+      Adverbe : modifie le verbe
+  %tr
+    %td
+      .symbol#preposition
+        %img{src:"preposition.png"}
+    %td
+      Préposition : montre la relation entre 2 mots
+  %tr
+    %td
+      .symbol#conjonction
+        %img{src:"conjonction.png"}
+    %td
+      Conjonction : relie deux parties de phrases
+  %tr
+    %td
+      .symbol#interjection
+        %img{src:"interjection.png"}
+    %td
+      Interjection : zut ! oh ! ha !
 
 :javascript
   $(init);
