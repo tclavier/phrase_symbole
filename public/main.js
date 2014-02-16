@@ -1,4 +1,5 @@
 function init () {
+  initTouch();
   create();
   $('.symbol').draggable({
     helper: "clone",
