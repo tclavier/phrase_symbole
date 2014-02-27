@@ -67,3 +67,7 @@
   border: solid 1px white;
   background: center no-repeat url("interjection.png");
 }
+
+input {
+  width: 100%;
+}

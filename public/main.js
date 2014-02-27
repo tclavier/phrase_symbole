@@ -49,3 +49,41 @@ function create () {
   $("#phrase").html(html);
 }
 
+function symbole_drop_down () {
+  var html = '';
+  var arrayLength = symboles.length;
+  for (var i = 0; i < arrayLength; i++) {
+    html = html + "<option>" + symboles[i] + "</option>"
+  }
+  html = "<select>" + html + "</select>";
+  return html;
+}
+
+function split_phrase () {
+  var texte = $('#saisie').val();
+
+  var html = '';
+  var mots = texte.split(' ');
+  var arrayLength = mots.length;
+  var cur_mot = '';
+  var last_mot = '';
+  var ponctuation = "!,;:."
+
+  for (var i = 0 ; i < arrayLength; i++) {
+    if (mots[i]) {
+      cur_mot = mots[i];
+      if (ponctuation.indexOf(cur_mot.charAt(0)) === -1 ) {
+        if (last_mot) {
+          html = html + "<div class='case'><div class='mot'>"+last_mot+"</div>"+symbole_drop_down()+"</div>";
+        }
+        last_mot = cur_mot;
+      } else {
+        last_mot = last_mot + ' ' + cur_mot;
+      }
+    }
+  }
+  if (last_mot) {
+    html = html + "<div class='case'><div class='mot'>"+last_mot+"</div>"+symbole_drop_down()+"</div>";
+  }
+  $("#phrase").html(html);
+}

@@ -1,2 +1,15 @@
 %form
- Toto 
+  %input#saisie{placeholder:"Entrez une phrase"}
+  %br
+  Séparez chaque mots par des espaces
+
+  #phrase
+
+  %button#send Valider
+
+:javascript
+  $(document).ready(function () {
+    $('#saisie').keyup(split_phrase);
+  });
+  
+  var symboles = ['nom', 'verbe'];
