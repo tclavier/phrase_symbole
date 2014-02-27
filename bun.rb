@@ -24,7 +24,42 @@ class Bun < Sinatra::Base
   end
 
   get '/' do
-    haml :index
+    @phrase = Phrase.first(:offset => rand(Phrase.count))
+    if (@phrase == nil) 
+      #redirect '/phrases/new'
+      haml :index
+    else 
+      haml :index
+    end
+  end
+
+  get '/phrases/new' do
+    haml :new
+  end
+
+  post '/phrases' do
+    phrase = Phrase.new(params[:phrase])
+    if phrase.save
+      redirect '/'
+    else
+      redirect '/phrases/new'
+    end
+  end
+
+  get '/phrases/:id/edit' do |id|
+    @phrase = Phrase.get!(id)
+    haml :'edit'
+  end
+
+  post '/articles/:id' do |id|
+    phrase = Phrase.get!(id)
+    success = phrase.update!(params[:phrase])
+    
+    if success
+      redirect "/articles/#{id}"
+    else
+      redirect "/articles/#{id}/edit"
+    end
   end
 end
 

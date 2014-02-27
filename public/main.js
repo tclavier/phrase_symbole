@@ -39,8 +39,12 @@ function isGoodPlace(droppable) {
 
 function create () {
   var html = '';
-  for (var name in phrase) {
-    html = html + "<div class='case "+ phrase[name] +"'><div class='container'></div><div class='mot'>"+name+"</div></div>";
+
+  var arrayLength = phrase.mots.length;
+  for (var i = 0; i < arrayLength; i++) {
+    for (var name in phrase.mots[i]) {
+      html = html + "<div class='case "+ phrase.mots[i][name] +"'><div class='container'></div><div class='mot'>"+name+"</div></div>";
+    }
   }
   $("#phrase").html(html);
 }
