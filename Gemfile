@@ -7,4 +7,5 @@ gem "sqlite3"
 
 group :test do
   gem "shotgun"
+  gem "capistrano"
 end
