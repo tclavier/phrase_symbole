@@ -13,6 +13,17 @@ class Bun < Sinatra::Base
     set :haml, :format => :html5
     DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
     DataMapper.auto_migrate!
+    set :symboles, {
+      :article      => "Article : le petit ami du nom", 
+      :adjectif     => "Adjectif : donne une information sur le nom", 
+      :nom          => "Nom : désigne une personne, une chose ou un animal", 
+      :pronom       => "Pronom : remplace la famille du nom (article, adjectif, nom)", 
+      :verbe        => "Verbe : l'action de la phrase", 
+      :adverbe      => "Adverbe : modifie le verbe", 
+      :preposition  => "Préposition : montre la relation entre 2 mots",
+      :conjonction  => "Conjonction : relie deux parties de phrases",
+      :interjection => "Interjection : zut ! oh ! ha !" 
+    };
   end
 
   error do

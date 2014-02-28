@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+
 set :application, "Phrase symbole"
 set :repository,  "git@gitorious.org:thomas-clavier/codin_gouter_phrase_symbole.git"
 

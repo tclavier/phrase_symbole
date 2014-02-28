@@ -55,7 +55,7 @@ function symbole_drop_down () {
   for (var i = 0; i < arrayLength; i++) {
     html = html + "<option>" + symboles[i] + "</option>"
   }
-  html = "<select>" + html + "</select>";
+  html = "<select>" + symbole_options + "</select>";
   return html;
 }
 
