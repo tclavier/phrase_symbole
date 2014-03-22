@@ -25,47 +25,47 @@
 
 .bravo-article {
   border: solid 1px white;
-  background: center no-repeat url("article.png");
+  background: center no-repeat url("/images/article.png");
 }
 
 .bravo-adjectif {
   border: solid 1px white;
-  background: center no-repeat url("adjectif.png");
+  background: center no-repeat url("/images/adjectif.png");
 }
 
 .bravo-nom {
   border: solid 1px white;
-  background: center no-repeat url("nom.png");
+  background: center no-repeat url("/images/nom.png");
 }
 
 .bravo-verbe {
   border: solid 1px white;
-  background: center no-repeat url("verbe.png");
+  background: center no-repeat url("/images/verbe.png");
 }
 
 .bravo-adverbe {
   border: solid 1px white;
-  background: center no-repeat url("adverbe.png");
+  background: center no-repeat url("/images/adverbe.png");
 }
 
 .bravo-preposition {
   border: solid 1px white;
-  background: center no-repeat url("preposition.png");
+  background: center no-repeat url("/images/preposition.png");
 }
 
 .bravo-pronom {
   border: solid 1px white;
-  background: center no-repeat url("pronom.png");
+  background: center no-repeat url("/images/pronom.png");
 }
 
 .bravo-conjonction {
   border: solid 1px white;
-  background: center no-repeat url("conjonction.png");
+  background: center no-repeat url("/images/conjonction.png");
 }
 
 .bravo-interjection {
   border: solid 1px white;
-  background: center no-repeat url("interjection.png");
+  background: center no-repeat url("/images/interjection.png");
 }
 
 input {

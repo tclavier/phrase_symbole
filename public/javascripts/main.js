@@ -40,22 +40,20 @@ function isGoodPlace(droppable) {
 function create () {
   var html = '';
 
-  var arrayLength = phrase.mots.length;
-  for (var i = 0; i < arrayLength; i++) {
-    for (var name in phrase.mots[i]) {
-      html = html + "<div class='case "+ phrase.mots[i][name] +"'><div class='container'></div><div class='mot'>"+name+"</div></div>";
+  for (var count in phrase) {
+    for (var name in phrase[count]) {
+      html = html + "<div class='case "+ phrase[count][name] +"'><div class='container'></div><div class='mot'>"+name+"</div></div>";
     }
   }
   $("#phrase").html(html);
 }
 
-function symbole_drop_down () {
-  var html = '';
-  var arrayLength = symboles.length;
-  for (var i = 0; i < arrayLength; i++) {
-    html = html + "<option>" + symboles[i] + "</option>"
+function symbole_drop_down (num, mot) {
+  var html = "<select name='phrase["+num+"]["+mot+"]'>";
+  for (var symbole in symboles) {
+    html = html + "<option>" + symbole + "</option>";
   }
-  html = "<select>" + symbole_options + "</select>";
+  html = html + "</select>";
   return html;
 }
 
@@ -68,13 +66,15 @@ function split_phrase () {
   var cur_mot = '';
   var last_mot = '';
   var ponctuation = "!,;:."
+  var count = 0;
 
   for (var i = 0 ; i < arrayLength; i++) {
     if (mots[i]) {
       cur_mot = mots[i];
       if (ponctuation.indexOf(cur_mot.charAt(0)) === -1 ) {
         if (last_mot) {
-          html = html + "<div class='case'><div class='mot'>"+last_mot+"</div>"+symbole_drop_down()+"</div>";
+          html = html + "<div class='case'><div class='mot'>"+last_mot+"</div>"+symbole_drop_down(count, last_mot)+"</div>";
+          count = count + 1;
         }
         last_mot = cur_mot;
       } else {
@@ -83,7 +83,7 @@ function split_phrase () {
     }
   }
   if (last_mot) {
-    html = html + "<div class='case'><div class='mot'>"+last_mot+"</div>"+symbole_drop_down()+"</div>";
+    html = html + "<div class='case'><div class='mot'>"+last_mot+"</div>"+symbole_drop_down(count, last_mot)+"</div>";
   }
   $("#phrase").html(html);
 }

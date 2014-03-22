@@ -1,25 +1,26 @@
 # encoding: utf-8
+require "active_support/core_ext"
 
 class Phrase 
   include DataMapper::Resource
   property :id,   Serial
-  property :json, Text, :required => true
+  property :mots, Text, :required => true
 end
 
-class Bun < Sinatra::Base
+class Bun < Sinatra::Application
   @flash
 
   configure do
     set :haml, :format => :html5
     DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
-    DataMapper.auto_migrate!
+    DataMapper.finalize.auto_upgrade!
     set :symboles, {
       :article      => "Article : le petit ami du nom", 
       :adjectif     => "Adjectif : donne une information sur le nom", 
       :nom          => "Nom : désigne une personne, une chose ou un animal", 
       :pronom       => "Pronom : remplace la famille du nom (article, adjectif, nom)", 
       :verbe        => "Verbe : l'action de la phrase", 
-      :adverbe      => "Adverbe : modifie le verbe", 
+      :adverbe      => "Adverbe : montre comment se fait l'action", 
       :preposition  => "Préposition : montre la relation entre 2 mots",
       :conjonction  => "Conjonction : relie deux parties de phrases",
       :interjection => "Interjection : zut ! oh ! ha !" 
@@ -49,7 +50,9 @@ class Bun < Sinatra::Base
   end
 
   post '/phrases' do
-    phrase = Phrase.new(params[:phrase])
+    phrase = Phrase.new()
+    phrase.mots = params[:phrase].to_json
+    logger.debug phrase
     if phrase.save
       redirect '/'
     else

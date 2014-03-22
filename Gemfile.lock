@@ -1,6 +1,9 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    activesupport (3.2.16)
+      i18n (~> 0.6, >= 0.6.4)
+      multi_json (~> 1.0)
     addressable (2.3.5)
     bcrypt-ruby (3.1.2)
     capistrano (2.15.5)
@@ -61,6 +64,7 @@ GEM
     haml (4.0.5)
       tilt
     highline (1.6.19)
+    i18n (0.6.9)
     json (1.8.1)
     json_pure (1.8.1)
     multi_json (1.8.4)
@@ -89,6 +93,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   capistrano
   data_mapper
   dm-sqlite-adapter

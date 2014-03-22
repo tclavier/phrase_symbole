@@ -1,4 +1,4 @@
-%form
+%form{action:"/phrases", method:"post"}
   %input#saisie{placeholder:"Entrez une phrase"}
   %br
   Séparez chaque mots par des espaces
@@ -6,12 +6,13 @@
   #phrase
 
   %button#send Valider
+ 
+:javascript  
+  var symboles = #{ settings.symboles.to_json};
 
 :javascript
   $(document).ready(function () {
     $('#saisie').keyup(split_phrase);
   });
   
-  - settings.symboles.each_key { |symbole|  }
-    
   var symbole_options = ""
